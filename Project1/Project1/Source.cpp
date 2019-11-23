@@ -6,7 +6,7 @@
 #include <stdlib.h>     // EXIT_FAILURE
 #include <stdio.h>
 #include <string>
-#include "OneBookManagement.h"
+
 #include "BookManagent.h"
 
 
@@ -74,17 +74,39 @@ int main() {
 
 
 	*/
+	ListBook listbook;
+	listbook.showListBook();
+	cout << "enter 1 to show list of book\n";
+	cout << "enter 2 to show detail of book\n";
+	cout << "enter 3 to add book\n";
+	cout << "enter 4 to change info of book\n";
+	cout << "enter 5 to search book\n";
+	cout << "other to end program\n";
 	
-	ListBook listBook;
-	listBook.addBook();
-	listBook.addBook();
-	listBook.showListBook();
-	listBook.change();
-	listBook.addBook();
-	listBook.addBook();
-	listBook.addBook();
-	listBook.addBook();
-	listBook.change();
-	
+	while (true) {
+		
+
+		int a;
+		cout << "enter 1,2,3,4,5 or other to excute action you want to do\n";
+		cin >> a;
+		if (a == 1) {
+			listbook.showListBook();
+		}
+		else if (a == 2) {
+			listbook.showBookDetail();
+		}
+		else if (a == 3) {
+			listbook.addBook();
+		}
+		else if (a == 4) {
+			listbook.change();
+		}
+		else if (a == 5) {
+			listbook.search();
+		}
+		else {
+			break;
+		}
+	}
 }
 

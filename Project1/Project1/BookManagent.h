@@ -102,6 +102,8 @@ public:
 			cout << "num of pages : " << list[i].getNumsOfPage() << "\n";
 			cout << "publishing year : " << list[i].getPublishingYear() << "\n";
 			cout << "num of books : " << list[i].getNumsOfBook() << "\n";
+			cout << "num of pages : " << list[i].getNumsOfPage() << "\n";
+			cout << "\n";
 		}
 	}
 	
@@ -138,8 +140,8 @@ public:
 		cin >> publishingYear;
 
 		string fileName = "./file/";
+		fileName.append(std::to_string(bookID));
 		fileName.append(name);
-		fileName.append(author);
 		fileName.append(".txt");
 
 		OneBookManagement oneBookManagement(bookID, numsOfBook, position, name, field, author, page, publishingYear);
@@ -186,13 +188,127 @@ public:
 
 
 	void search() {
-
+		cout << "Enter your name of book you want to search\n";
+		string name;
+		cin >> name;
+		int stt = 1;
+		cout << "list book have " << name << " in name : \n";
+		cout << "numerical order   " << "book id         " << "name  \n";
+		for (int i = 0; i < list.size(); i++) {
+			if (list[i].getNameOfBook().find(name) != string::npos) {
+				cout << stt << "                  " << i << "            " << list[i].getNameOfBook() << "\n";
+			}
+		}
 	}
 
 
 
 	void change() {
+		cout << "What is book id you want to change info?\n";
+		int id;
+		cin >> id;
+
+		if (id >= list.size()) {
+			cout << "No book have id = " << id << "\n";
+			return;
+		}
+
+		string name;
+		cout << "what is the new name of book ?\n";
+		cin >> name;
 		
+
+
+		string position;
+		cout << "where is book's position?\n";
+		cin >> position;
+
+		string author;
+		cout << "what is author of book?\n";
+		cin >> author;
+
+		string field;
+		cout << "what is the field of book?\n";
+		cin >> field;
+
+		int numsOfBook;
+		cout << "what is the number of book you want to add?\n";
+		cin >> numsOfBook;
+
+		int page;
+		cout << "how many page in book?\n";
+		cin >> page;
+
+
+		int publishingYear;
+		cout << "when did the book publish?\n";
+		cin >> publishingYear;
+
+
+
+
+		string fn = "./file/";
+		fn.append(std::to_string(id));
+		fn.append(list[id].getNameOfBook());
+		fn.append(".txt");
+		remove(fn.c_str());
+
+		fn = "./file/";
+		fn.append(std::to_string(id));
+		fn.append(name);
+		fn.append(".txt");
+
+		ofstream myfile;
+		myfile.open(fn);
+		myfile << id;
+		myfile << "\n";
+		myfile << name;
+		myfile << "\n";
+		myfile << position;
+		myfile << "\n";
+		myfile << author;
+		myfile << "\n";
+		myfile << field;
+		myfile << "\n";
+		myfile << page;
+		myfile << "\n";
+		myfile << publishingYear;
+		myfile << "\n";
+		myfile << numsOfBook;
+		myfile.close();
+
+
+		list[id].setNameOfBook(name);
+		list[id].setAuthor(author);
+		list[id].setField(field);
+		list[id].setNumsOfBook(numsOfBook);
+		list[id].setNumsOfPage(page);
+		list[id].setPosition(position);
+		list[id].setPublishingYear(publishingYear);
+
+		fstream listBookFile(this->fileListBookName);
+
+
+		fstream listPathBookfile(this->filePathListBookName);
+
+
+		for (int i = 0; i < list.size(); i++) {
+			listBookFile << list[i].getNameOfBook();
+			listBookFile << "\n";
+
+
+
+			string filename = "./file/";
+			filename.append(std::to_string(i));
+			filename.append(list[i].getNameOfBook());
+			filename.append(".txt");
+			listPathBookfile << filename;
+			listPathBookfile << "\n";
+		}
+
+
+		listPathBookfile.close();
+		listBookFile.close();
 
 	}
 };
