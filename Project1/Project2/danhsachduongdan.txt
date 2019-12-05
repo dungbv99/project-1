@@ -1,0 +1,4 @@
+./file/0cau truc du lieu va giai thuat.txt
+./file/1tri tue nhan tao.txt
+./file/2vat ly.txt
+./file/3toan cao cap 1.txt

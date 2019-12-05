@@ -1,3 +1,0 @@
-./file/0adasdsa.txt
-./file/1zxc.txt
-./file/2qwerty.txt
