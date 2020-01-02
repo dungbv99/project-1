@@ -164,8 +164,6 @@ public:
 							vitri = l;
 						}
 						i++;
-
-
 					}
 					QuanLySach sach(tensach, id, linhvuc, tacgia, sotrang, namxb, soluong, vitri);
 					list.push_back(sach);
@@ -454,7 +452,7 @@ public:
 					cout << "Danh sach sach cua tac gia " << tacgia << "trong thu vien:\n";
 				}
 				stt++;
-				cout << stt << ".  " << list[i].getPhieuSach().getTacgia()<<"\n";
+				cout << stt << ".  " << list[i].getPhieuSach().getTensach()<<"\n";
 			}
 		}
 		if (stt == 0) {
@@ -477,7 +475,7 @@ public:
 					cout << "Danh sach sach trong linh vuc  " << linhvuc << "trong thu vien :\n";
 				}
 				stt++;
-				cout << stt << ".  " << list[i].getPhieuSach().getLinhvuc() << "\n";
+				cout << stt << ".  " << list[i].getPhieuSach().getTensach() << "\n";
 			}
 		}
 		if (stt == 0) {
@@ -548,7 +546,7 @@ int main() {
 	cout << "Nhap 7 de xem thong ke sach cua thu vien\n";
 	cout << "Nhap phim khac de ket thuc chuong trinh\n";
 	while (true) {
-		cout << "Moi ban thuc hien nhap cac phim duoi day tuong ung voi cac hanh dong:\n";
+		cout << "Moi ban thuc hien nhap cac phim tuong ung voi cac hanh dong:\n";
 		string mystring;
 		int id;
 		getline(cin, mystring);
